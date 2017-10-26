@@ -11,7 +11,7 @@ from urllib import parse, request
 parse.uses_netloc.append("postgres")
 url = parse.urlparse(os.environ["DATABASE_URL"])
 
-@route('/create')
+@route('/')
 def create_picnic():
     db = psycopg2.connect('picnic.db')
     db.execute("CREATE TABLE picnic (id INTEGER PRIMARY KEY, item CHAR(100) NOT NULL, quant INTEGER NOT NULL)")
