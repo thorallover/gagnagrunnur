@@ -1,7 +1,13 @@
-from bottle import route, run, template
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import bottle
 import os
-from urllib import parse
 import psycopg2
+import urllib
+
+from bottle import *
+from urllib import parse, request
+
 
 parse.uses_netloc.append("postgres")
 url = parse.urlparse(os.environ["DATABASE_URL"])
@@ -16,4 +22,4 @@ def show_picnic():
     output = template('bring_to_picnic', rows=data)
     return output
     
-run(host='0.0.0.0', )
+run(host='0.0.0.0', port=argv[1])
